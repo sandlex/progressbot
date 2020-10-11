@@ -9,3 +9,5 @@
 * active - show active projects
 * completed - show completed projects
 * cancelled - show cancelled projects
+
+### Interaction state lives for 5 minutes

@@ -1,5 +1,6 @@
-package com.sandlex.progressbot.bot;
+package com.sandlex.progressbot;
 
+import com.sandlex.progressbot.bot.Commands;
 import com.sandlex.progressbot.bot.commands.ExecutableCommand;
 import lombok.Setter;
 import org.springframework.context.ApplicationContext;

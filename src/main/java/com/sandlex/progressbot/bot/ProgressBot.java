@@ -1,5 +1,8 @@
 package com.sandlex.progressbot.bot;
 
+import com.sandlex.progressbot.CommandExecutor;
+import com.sandlex.progressbot.InteractionStepExecutor;
+import com.sandlex.progressbot.cache.InteractionStateMachine;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -15,6 +18,8 @@ import java.util.Optional;
 public class ProgressBot extends TelegramLongPollingBot {
 
     private final CommandExecutor commandExecutor;
+    private final InteractionStateMachine interactionStateMachine;
+    private final InteractionStepExecutor interactionStepExecutor;
 
     /**
      * Method for receiving messages.
@@ -25,9 +30,13 @@ public class ProgressBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         String messageContent = message.getText();
+        String chatId = message.getChatId().toString();
         if (messageContent.startsWith("/")) {
+            interactionStateMachine.resetFor(message.getFrom().getId());
             Optional<Commands> maybeCommand = Commands.fromString(messageContent.substring(1));
-            maybeCommand.ifPresent(command -> sendMsg(update.getMessage().getChatId().toString(), commandExecutor.execute(command, message)));
+            maybeCommand.ifPresent(command -> sendMsg(chatId, commandExecutor.execute(command, message)));
+        } else {
+            sendMsg(chatId, interactionStepExecutor.execute(message));
         }
     }
 

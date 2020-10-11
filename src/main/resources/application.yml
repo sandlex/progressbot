@@ -1,3 +1,6 @@
+logging:
+    level:
+        com.sandlex: DEBUG
 spring:
     datasource:
         driverClassName: org.postgresql.Driver
