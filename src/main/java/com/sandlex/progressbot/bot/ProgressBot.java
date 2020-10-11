@@ -14,9 +14,10 @@ import java.util.Optional;
 public class ProgressBot extends TelegramLongPollingBot {
 
     private final CommandExecutor commandExecutor;
-    
+
     /**
      * Method for receiving messages.
+     *
      * @param update Contains a message from the user.
      */
     @Override
@@ -30,8 +31,9 @@ public class ProgressBot extends TelegramLongPollingBot {
 
     /**
      * Method for creating a message and sending it.
+     *
      * @param chatId chat id
-     * @param s The String that you want to send as a message.
+     * @param s      The String that you want to send as a message.
      */
     public synchronized void sendMsg(String chatId, String s) {
         SendMessage sendMessage = new SendMessage();
@@ -47,6 +49,7 @@ public class ProgressBot extends TelegramLongPollingBot {
 
     /**
      * This method returns the bot's name, which was specified during registration.
+     *
      * @return bot name
      */
     @Override
@@ -56,6 +59,7 @@ public class ProgressBot extends TelegramLongPollingBot {
 
     /**
      * This method returns the bot's token for communicating with the Telegram server
+     *
      * @return the bot's token
      */
     @Override

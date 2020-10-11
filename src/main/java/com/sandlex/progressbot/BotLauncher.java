@@ -2,6 +2,7 @@ package com.sandlex.progressbot;
 
 import com.sandlex.progressbot.bot.CommandExecutor;
 import com.sandlex.progressbot.bot.ProgressBot;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,10 +14,10 @@ import javax.annotation.PostConstruct;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class BotLauncher {
-    
-    @Autowired
-    CommandExecutor commandExecutor;
+
+    private final CommandExecutor commandExecutor;
 
     @PostConstruct
     public void launchBots() {
@@ -27,6 +28,6 @@ public class BotLauncher {
         } catch (TelegramApiRequestException e) {
             log.error("Error while launching bot", e);
         }
-
     }
+
 }
