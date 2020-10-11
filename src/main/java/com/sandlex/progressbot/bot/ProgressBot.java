@@ -3,6 +3,7 @@ package com.sandlex.progressbot.bot;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
+import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
@@ -22,10 +23,11 @@ public class ProgressBot extends TelegramLongPollingBot {
      */
     @Override
     public void onUpdateReceived(Update update) {
-        String message = update.getMessage().getText();
-        if (message.startsWith("/")) {
-            Optional<Commands> maybeCommand = Commands.fromString(message.substring(1));
-            maybeCommand.ifPresent(command -> sendMsg(update.getMessage().getChatId().toString(), commandExecutor.execute(command)));
+        Message message = update.getMessage();
+        String messageContent = message.getText();
+        if (messageContent.startsWith("/")) {
+            Optional<Commands> maybeCommand = Commands.fromString(messageContent.substring(1));
+            maybeCommand.ifPresent(command -> sendMsg(update.getMessage().getChatId().toString(), commandExecutor.execute(command, message)));
         }
     }
 

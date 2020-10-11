@@ -1,11 +1,12 @@
 package com.sandlex.progressbot.bot.commands;
 
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.api.objects.Message;
 
 @Component
 public class SubmitCommand implements ExecutableCommand {
     @Override
-    public String execute() {
+    public String execute(Message message) {
         return "SubmitCommand executed";
     }
 }

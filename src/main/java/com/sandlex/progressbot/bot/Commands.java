@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public enum Commands {
 
-    START("", StartCommand.class), // Nice to meet you, %username%
+    START("", StartCommand.class),
     NEW("create new project", NewCommand.class),
     SUBMIT("submit current progress", SubmitCommand.class),
     COMPLETE("complete project", CompleteCommand.class),

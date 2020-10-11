@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.api.objects.Message;
 
 @Component
 public class CommandExecutor implements ApplicationContextAware {
@@ -12,9 +13,9 @@ public class CommandExecutor implements ApplicationContextAware {
     @Setter
     private ApplicationContext applicationContext;
 
-    public String execute(Commands command) {
+    public String execute(Commands command, Message message) {
         ExecutableCommand executableCommand = applicationContext.getBean(command.getCommandClass());
-        return executableCommand.execute();
+        return executableCommand.execute(message);
     }
 
 }
