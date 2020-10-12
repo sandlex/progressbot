@@ -1,5 +1,6 @@
-package com.sandlex.progressbot.bot.commands;
+package com.sandlex.progressbot.bot.commands.interactions;
 
+import com.sandlex.progressbot.bot.commands.interactions.InteractionCommand;
 import com.sandlex.progressbot.bot.model.Project;
 import com.sandlex.progressbot.bot.model.Status;
 import com.sandlex.progressbot.bot.repo.PersonRepo;

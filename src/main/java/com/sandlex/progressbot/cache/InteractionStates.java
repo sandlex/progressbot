@@ -1,8 +1,8 @@
 package com.sandlex.progressbot.cache;
 
-import com.sandlex.progressbot.bot.commands.InteractionCommand;
-import com.sandlex.progressbot.bot.commands.ProjectGoalCommand;
-import com.sandlex.progressbot.bot.commands.ProjectNameCommand;
+import com.sandlex.progressbot.bot.commands.interactions.InteractionCommand;
+import com.sandlex.progressbot.bot.commands.interactions.ProjectGoalCommand;
+import com.sandlex.progressbot.bot.commands.interactions.ProjectNameCommand;
 import com.sandlex.progressbot.bot.model.Project;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

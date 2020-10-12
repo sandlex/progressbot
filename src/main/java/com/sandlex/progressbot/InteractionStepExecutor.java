@@ -1,6 +1,6 @@
 package com.sandlex.progressbot;
 
-import com.sandlex.progressbot.bot.commands.InteractionCommand;
+import com.sandlex.progressbot.bot.commands.interactions.InteractionCommand;
 import com.sandlex.progressbot.cache.InteractionStateMachine;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
