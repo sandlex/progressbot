@@ -1,5 +1,6 @@
 package com.sandlex.progressbot.cache;
 
+import com.sandlex.progressbot.bot.commands.interactions.CompletionProjectCommand;
 import com.sandlex.progressbot.bot.commands.interactions.InteractionCommand;
 import com.sandlex.progressbot.bot.commands.interactions.ProjectGoalCommand;
 import com.sandlex.progressbot.bot.commands.interactions.ProjectNameCommand;
@@ -16,7 +17,8 @@ public enum InteractionStates {
     PROJECT_NAME(Project.class, ProjectNameCommand.class),
     PROJECT_GOAL(Project.class, ProjectGoalCommand.class),
     SUBMISSION_PROJECT(Submission.class, SubmissionProjectCommand.class),
-    SUBMISSION_VALUE(Submission.class, SubmissionValueCommand.class);
+    SUBMISSION_VALUE(Submission.class, SubmissionValueCommand.class),
+    COMPLETION_PROJECT(Project.class, CompletionProjectCommand.class);
 
     @Getter
     private final Class<? extends CacheableEntity> entity;
