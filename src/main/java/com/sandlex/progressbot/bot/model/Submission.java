@@ -1,5 +1,6 @@
 package com.sandlex.progressbot.bot.model;
 
+import com.sandlex.progressbot.cache.CacheableEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,7 @@ import java.util.Date;
 @ToString(callSuper = true)
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Submission extends BaseEntity {
+public class Submission extends BaseEntity implements CacheableEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")

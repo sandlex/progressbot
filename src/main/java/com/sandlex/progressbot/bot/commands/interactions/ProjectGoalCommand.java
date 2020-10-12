@@ -1,6 +1,5 @@
 package com.sandlex.progressbot.bot.commands.interactions;
 
-import com.sandlex.progressbot.bot.commands.interactions.InteractionCommand;
 import com.sandlex.progressbot.bot.model.Project;
 import com.sandlex.progressbot.bot.model.Status;
 import com.sandlex.progressbot.bot.repo.PersonRepo;
@@ -10,7 +9,6 @@ import com.sandlex.progressbot.cache.InteractionStateMachine;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.api.objects.Message;
 
 @Component
 @RequiredArgsConstructor
@@ -22,9 +20,7 @@ public class ProjectGoalCommand implements InteractionCommand {
     private final ProjectRepo projectRepo;
 
     @Override
-    public String execute(CacheableEntity entity, Message message) {
-        String messageContent = message.getText().trim();
-
+    public String execute(CacheableEntity entity, Integer personId, String messageContent) {
         int value = 100;
         try {
             value = Integer.parseInt(messageContent);
@@ -34,7 +30,6 @@ public class ProjectGoalCommand implements InteractionCommand {
             }
         }
 
-        Integer personId = message.getFrom().getId();
         int finalValue = value;
         return personRepo.findByTelegramId(personId)
                 .map(person -> {
@@ -45,7 +40,7 @@ public class ProjectGoalCommand implements InteractionCommand {
                     project.setGoal(finalValue);
                     projectRepo.save(project);
 
-                    interactionStateMachine.resetFor(message.getFrom().getId());
+                    interactionStateMachine.resetFor(personId);
                     return "OK. Project saved";
                 })
                 .orElseGet(() -> {

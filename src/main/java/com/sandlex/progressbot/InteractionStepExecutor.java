@@ -7,7 +7,6 @@ import lombok.Setter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.api.objects.Message;
 
 @Component
 @RequiredArgsConstructor
@@ -18,11 +17,11 @@ public class InteractionStepExecutor implements ApplicationContextAware {
 
     private final InteractionStateMachine interactionStateMachine;
 
-    public String execute(Message message) {
-        return interactionStateMachine.stateFor(message.getFrom().getId())
+    public String execute(Integer personId, String messageContent) {
+        return interactionStateMachine.stateFor(personId)
                 .map(stateWithEntity -> {
                     InteractionCommand interactionCommand = applicationContext.getBean(stateWithEntity.getState().getCommandClass());
-                    return interactionCommand.execute(stateWithEntity.getEntity(), message);
+                    return interactionCommand.execute(stateWithEntity.getEntity(), personId, messageContent.trim());
                 })
                 .orElse("Use commands to interact with me");
     }

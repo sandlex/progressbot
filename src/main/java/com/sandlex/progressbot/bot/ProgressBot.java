@@ -6,6 +6,7 @@ import com.sandlex.progressbot.cache.InteractionStateMachine;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
+import org.telegram.telegrambots.api.objects.CallbackQuery;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -33,18 +34,27 @@ public class ProgressBot extends TelegramLongPollingBot {
      */
     @Override
     public void onUpdateReceived(Update update) {
-        Message message = update.getMessage();
-        String messageContent = message.getText();
-        String chatId = message.getChatId().toString();
-        if (messageContent.startsWith("/")) {
-            interactionStateMachine.resetFor(message.getFrom().getId());
-            Optional<Commands> maybeCommand = Commands.fromString(messageContent.substring(1));
-            maybeCommand.ifPresent(command -> {
-                BotResponse botResponse = commandExecutor.execute(command, message);
-                sendMessage(chatId, botResponse.getMessage(), botResponse.getCallbackOptions());
-            });
-        } else {
-            sendMessage(chatId, interactionStepExecutor.execute(message), Collections.emptyList());
+        if (update.hasMessage()) {
+            Message message = update.getMessage();
+            String messageContent = message.getText();
+            String chatId = message.getChatId().toString();
+            Integer personId = message.getFrom().getId();
+            if (messageContent.startsWith("/")) {
+                interactionStateMachine.resetFor(personId);
+                Optional<Commands> maybeCommand = Commands.fromString(messageContent.substring(1));
+                maybeCommand.ifPresent(command -> {
+                    BotResponse botResponse = commandExecutor.execute(command, message);
+                    sendMessage(chatId, botResponse.getMessage(), botResponse.getCallbackOptions());
+                });
+            } else {
+                sendMessage(chatId, interactionStepExecutor.execute(personId, messageContent), Collections.emptyList());
+            }
+        } else if (update.hasCallbackQuery()) {
+            CallbackQuery callbackQuery = update.getCallbackQuery();
+            String selectedOption = callbackQuery.getData();
+            Integer personId = callbackQuery.getFrom().getId();
+            String chatId = callbackQuery.getMessage().getChatId().toString();
+            sendMessage(chatId, interactionStepExecutor.execute(personId, selectedOption), Collections.emptyList());
         }
     }
 
