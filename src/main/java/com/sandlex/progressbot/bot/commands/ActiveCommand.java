@@ -1,12 +1,13 @@
 package com.sandlex.progressbot.bot.commands;
 
+import com.sandlex.progressbot.bot.BotResponse;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.api.objects.Message;
 
 @Component
 public class ActiveCommand implements ExecutableCommand {
     @Override
-    public String execute(Message message) {
-        return "ActiveCommand executed";
+    public BotResponse execute(Message message) {
+        return new BotResponse("ActiveCommand executed");
     }
 }
