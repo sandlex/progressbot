@@ -25,7 +25,7 @@ public class ActiveCommand implements ExecutableCommand {
         }
 
         return new BotResponse(
-                "You have " + activeProjects.size() + " active projects:",
+                "Your active projects:",
                 activeProjects);
     }
 

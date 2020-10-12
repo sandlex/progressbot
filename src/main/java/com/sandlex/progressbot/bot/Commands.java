@@ -2,6 +2,8 @@ package com.sandlex.progressbot.bot;
 
 import com.sandlex.progressbot.bot.commands.ActiveCommand;
 import com.sandlex.progressbot.bot.commands.CancelCommand;
+import com.sandlex.progressbot.bot.commands.CancelledCommand;
+import com.sandlex.progressbot.bot.commands.CompletedCommand;
 import com.sandlex.progressbot.bot.commands.ExecutableCommand;
 import com.sandlex.progressbot.bot.commands.CompleteCommand;
 import com.sandlex.progressbot.bot.commands.NewCommand;
@@ -21,8 +23,8 @@ public enum Commands {
     COMPLETE("complete project", CompleteCommand.class),
     CANCEL("cancel project", CancelCommand.class),
     ACTIVE("show active projects", ActiveCommand.class),
-    COMPLETED("show completed projects", CompleteCommand.class),
-    CANCELLED("show cancelled projects", CancelCommand.class);
+    COMPLETED("show completed projects", CompletedCommand.class),
+    CANCELLED("show cancelled projects", CancelledCommand.class);
 
     private final String description;
     @Getter
