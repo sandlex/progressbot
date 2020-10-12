@@ -18,7 +18,7 @@ public class ProjectNameCommand implements InteractionCommand {
 
     @Override
     public String execute(CacheableEntity entity, Integer personId, String messageContent) {
-        if (projectRepo.findByName(messageContent).isPresent()) {
+        if (projectRepo.findByPersonTelegramIdAndName(personId, messageContent).isPresent()) {
             return "You already have a project with this name. Please choose another one";
         }
 

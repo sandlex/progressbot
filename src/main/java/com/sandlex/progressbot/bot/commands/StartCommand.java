@@ -18,7 +18,7 @@ public class StartCommand implements ExecutableCommand {
         Person person = new Person();
         person.setTelegramId(message.getFrom().getId());
         personRepo.save(person);
-        return new BotResponse(String.format("Welcome, %s! Create your first project and start tracking progress", message.getFrom().getUserName()));
+        return new BotResponse(String.format("Welcome, %s! Create your /new project to start tracking progress", message.getFrom().getUserName()));
     }
 
 }

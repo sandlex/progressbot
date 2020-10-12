@@ -20,7 +20,7 @@ public class SubmissionProjectCommand implements InteractionCommand {
 
     @Override
     public String execute(CacheableEntity entity, Integer personId, String messageContent) {
-        return projectRepo.findByName(messageContent)
+        return projectRepo.findByPersonTelegramIdAndName(personId, messageContent)
                 .map(project -> {
                     Submission submission = (Submission) entity;
                     submission.setProject(project);

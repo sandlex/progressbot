@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface ProjectRepo extends CrudRepository<Project, Long> {
 
-    Optional<Project> findByName(String name);
+    Optional<Project> findByPersonTelegramIdAndName(Integer personId, String name);
 
     List<Project> findByPersonTelegramIdAndStatus(Integer personId, Status status);
 
