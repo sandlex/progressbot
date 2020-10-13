@@ -21,7 +21,7 @@ public class CompletedCommand implements ExecutableCommand {
     public BotResponse execute(Message message) {
         List<String> completedProjects = callbackOptionsBuilder.projectsWith(message.getFrom().getId(), Status.COMPLETED);
         if (completedProjects.isEmpty()) {
-            new BotResponse("Your don't have any completed projects");
+            return new BotResponse("Your don't have any completed projects");
         }
 
         return new BotResponse(
