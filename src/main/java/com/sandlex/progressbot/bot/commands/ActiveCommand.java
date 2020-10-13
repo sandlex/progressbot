@@ -21,7 +21,7 @@ public class ActiveCommand implements ExecutableCommand {
     public BotResponse execute(Message message) {
         List<String> activeProjects = callbackOptionsBuilder.projectsWith(message.getFrom().getId(), Status.ACTIVE);
         if (activeProjects.isEmpty()) {
-            new BotResponse("Your don't have any active projects. Use /new to create one");
+            return new BotResponse("Your don't have any active projects. Use /new to create one");
         }
 
         return new BotResponse(
