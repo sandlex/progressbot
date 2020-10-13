@@ -36,7 +36,7 @@ public class ProjectInfoCommand implements InteractionCommand {
                 .orElseGet(() -> {
                     log.error("Couldn't find project " + messageContent);
                     interactionStateMachine.resetFor(personId);
-                    return "Strange, but I don't know this project. Please try /submit again";
+                    return "Strange, but I don't know this project. Please try again";
                 });
     }
 
