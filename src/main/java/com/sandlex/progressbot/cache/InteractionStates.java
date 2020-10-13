@@ -4,6 +4,7 @@ import com.sandlex.progressbot.bot.commands.interactions.CancellationProjectComm
 import com.sandlex.progressbot.bot.commands.interactions.CompletionProjectCommand;
 import com.sandlex.progressbot.bot.commands.interactions.InteractionCommand;
 import com.sandlex.progressbot.bot.commands.interactions.ProjectGoalCommand;
+import com.sandlex.progressbot.bot.commands.interactions.ProjectInfoCommand;
 import com.sandlex.progressbot.bot.commands.interactions.ProjectNameCommand;
 import com.sandlex.progressbot.bot.commands.interactions.SubmissionProjectCommand;
 import com.sandlex.progressbot.bot.commands.interactions.SubmissionValueCommand;
@@ -20,7 +21,8 @@ public enum InteractionStates {
     SUBMISSION_PROJECT(Submission.class, SubmissionProjectCommand.class),
     SUBMISSION_VALUE(Submission.class, SubmissionValueCommand.class),
     COMPLETION_PROJECT(Project.class, CompletionProjectCommand.class),
-    CANCELLATION_PROJECT(Project.class, CancellationProjectCommand.class);
+    CANCELLATION_PROJECT(Project.class, CancellationProjectCommand.class),
+    PROJECT_INFO(Project.class, ProjectInfoCommand.class);
 
     @Getter
     private final Class<? extends CacheableEntity> entity;

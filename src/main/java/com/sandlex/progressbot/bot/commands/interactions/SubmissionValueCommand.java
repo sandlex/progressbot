@@ -31,6 +31,15 @@ public class SubmissionValueCommand implements InteractionCommand {
             return "This value is greater than project size. Please try again";
         }
 
+        Integer max = submissionRepo.findByProjectOrderByValueDesc(submission.getProject())
+                .stream()
+                .findFirst()
+                .map(Submission::getValue)
+                .orElse(0);
+        if (value <= max) {
+            return "This value is not greater than your current max progress. Please try again";
+        }
+
         submission.setValue(value);
         submissionRepo.save(submission);
 
