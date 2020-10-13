@@ -14,12 +14,15 @@ https://prgrssbot.herokuapp.com
 https://prgrssbot.herokuapp.com/wakeup
 
 ### Supported commands
-* new - create new project
-* submit - submit current progress
-* complete - complete project
-* cancel - cancel project
-* active - show active projects
-* completed - show completed projects
-* cancelled - show cancelled projects
+The list as it should be sent to PodFather:
+```
+new - create new project
+submit - submit current progress
+complete - complete project
+cancel - cancel project
+active - show active projects
+completed - show completed projects
+cancelled - show cancelled projects
+```
 
 ### Interaction state lives for 5 minutes
