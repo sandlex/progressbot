@@ -19,8 +19,14 @@
 ## How to check billing
 * `heroku ps -a prgrssbot`
 
+## Working with prod database
+* `heroku pg:info --app prgrssbot`
+* `heroku pg:psql --app prgrssbot`
+* `select * from person/project/submission;`
+
 # Links
 * [GitHub](https://github.com/sandlex/progressbot)
 * [Deploying Spring Boot Applications to Heroku](https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku)
 * [Free Dyno Hours](https://devcenter.heroku.com/articles/free-dyno-hours)
 * [Creating a Telegram Bot in Java: from conception to deployment](https://medium.com/codegym/creating-a-telegram-bot-in-java-from-conception-to-deployment-8f8230b81b97)
+* [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#using-the-cli)
