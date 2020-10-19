@@ -20,6 +20,7 @@
 * `heroku ps -a prgrssbot`
 
 ## Working with prod database
+* make sure psql is installed (`libpq`) and added to the path, alternatively use `ln -s /usr/local/Cellar/libpq/13.0_1/bin/psql /usr/local/bin/psql`
 * `heroku pg:info --app prgrssbot`
 * `heroku pg:psql --app prgrssbot`
 * `select * from person/project/submission;`
