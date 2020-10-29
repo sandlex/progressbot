@@ -11,10 +11,10 @@
 * deploy app `git push heroku master` (or `git push heroku HEAD:master`)
 
 ## How to develop locally with one bot
-* shut down prod instance `heroku ps:scale web=0`
+* shut down prod instance `heroku ps:scale web=0 --app prgrssbot`
 * do your work on local environment
 * shut down local app
-* scale up prod instance `heroku ps:scale web=1`
+* scale up prod instance `heroku ps:scale web=1 --app prgrssbot`
 
 ## How to check billing
 * `heroku ps -a prgrssbot`

@@ -7,6 +7,7 @@ import com.sandlex.progressbot.bot.commands.CompletedCommand;
 import com.sandlex.progressbot.bot.commands.ExecutableCommand;
 import com.sandlex.progressbot.bot.commands.CompleteCommand;
 import com.sandlex.progressbot.bot.commands.NewCommand;
+import com.sandlex.progressbot.bot.commands.ProgressCommand;
 import com.sandlex.progressbot.bot.commands.StartCommand;
 import com.sandlex.progressbot.bot.commands.SubmitCommand;
 import lombok.Getter;
@@ -24,7 +25,8 @@ public enum Commands {
     CANCEL("cancel project", CancelCommand.class),
     ACTIVE("show active projects", ActiveCommand.class),
     COMPLETED("show completed projects", CompletedCommand.class),
-    CANCELLED("show cancelled projects", CancelledCommand.class);
+    CANCELLED("show cancelled projects", CancelledCommand.class),
+    PROGRESS("show progress of all active projects", ProgressCommand.class);
 
     private final String description;
     @Getter
